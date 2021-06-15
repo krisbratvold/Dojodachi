@@ -1,0 +1,34 @@
+﻿@model Pet
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="top center-text">
+    <p class="mr-5 ml-5">Fullness: @Model.Fullness</p>
+    <p class="mr-5">Happiness: @Model.Happiness</p>
+    <p class="mr-5">Meals: @Model.Meals</p>
+    <p class="mr-5">Energy: @Model.Energy</p>
+</div>
+<div class="content">
+    <img src="https://bookofages.jellyneo.net/assets/imgs/species/replaced/jubjub/4_blue.gif" alt="pet">
+    @{
+        if (@Model.IsDead)
+        {
+            <p>You Lose!</p>
+            <a asp-controller="Home" asp-action="Reset" class="bot btn btn-primary mr-5 ml-5 mb-5">Reset</a>
+        }
+    }
+    @{
+        if (@Model.IsWinner)
+        {
+            <p>Congratulations you win!</p>
+        }
+    }
+    <p>@ViewBag.message</p>
+</div>
+<div class="bot">
+    <a asp-controller="Home" asp-action="Feed" class="btn btn-primary mr-5 ml-5">Feed</a>
+    <a asp-controller="Home" asp-action="Play" class="btn btn-primary mr-5 ml-5">Play</a>
+    <a asp-controller="Home" asp-action="Work" class="btn btn-primary mr-5 ml-5">Work</a>
+    <a asp-controller="Home" asp-action="Sleep" class="btn btn-primary mr-5 ml-5">Sleep</a>
+</div>
